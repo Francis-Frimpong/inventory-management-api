@@ -50,4 +50,25 @@ class Dashboard{
 
         return $results['low_stock'] ?? 0;
     }
+
+    public function transaction()
+    {
+          $sql = "SELECT p.name, 'Stock In' AS type, si.quantity, si.date
+        FROM stock_in si
+        JOIN products p ON si.product_id = p.id
+
+        UNION ALL
+
+        SELECT p.name, 'Stock Out' AS type, so.quantity, so.date
+        FROM stock_out so
+        JOIN products p ON so.product_id = p.id
+
+        ORDER BY date DESC
+        LIMIT 5;";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
 }

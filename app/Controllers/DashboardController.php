@@ -27,8 +27,25 @@ class DashboardController
         ];
 
         Response::json($data, 200);
-        echo "endpoint works";
         exit;
+    }
+
+    public function recentTransaction()
+    {
+        $transactions = $this->dashboard->transaction();
+        $data = [];
+
+           foreach($transactions as $transaction){
+            $data[] = [
+                'Product' => $transaction['product'],
+                'Type' => $transaction['type'],
+                'Quantity' => $transaction['quantity'],
+                'Date' => $transaction['date'],
+            ];
+
+            }
+        Response::json($data, 200);
+        
     }
 
 }
