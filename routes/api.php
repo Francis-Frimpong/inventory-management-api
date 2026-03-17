@@ -10,7 +10,10 @@ $router->get('/api/dashboard', [DashboardController::class, 'inventoryStats']);
 
 $router->get('/api/dashboard/recent-transactions', [DashboardController::class, 'recentTransaction']);
 
-$router->post('/api/categories', [CategoryController::class, 'addCategory']);
+$router->get('/api/categories', [CategoryController::class, 'showCategoryList']);
+
+$router->post('/api/categories/add-categories', [CategoryController::class, 'addCategory']);
+
 
 
 $router->dispatch();

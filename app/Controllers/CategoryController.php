@@ -10,6 +10,18 @@ class CategoryController{
         $this->category = new Category();
     }
 
+    public function showCategoryList()
+    {
+        $categoryName = $this->category->showCategory();
+
+        $data = [
+            'name' => $categoryName
+        ];
+
+        Response::json($data, 200);
+        exit;
+    }
+
     public function addCategory()
     {
         $data = json_decode(file_get_contents('php://input'), true);
