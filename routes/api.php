@@ -14,6 +14,8 @@ $router->get('/api/categories', [CategoryController::class, 'showCategoryList'])
 
 $router->post('/api/categories/add-categories', [CategoryController::class, 'addCategory']);
 
+$router->delete('/api/categories/delete-categories/{id}', [CategoryController::class, 'deleteCategory']);
+
 
 
 $router->dispatch();

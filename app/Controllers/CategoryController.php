@@ -39,7 +39,16 @@ class CategoryController{
         $addCategory = $this->category->category($data['name']);
 
         if($addCategory){
-            Response::json(['success' => 'Category added']);
+            Response::json(['success' => 'Category added'],200);
+        }
+    }
+
+    public function deleteCategory($id)
+    {
+        $deleteCategory = $this->category->delete($id);
+
+        if($deleteCategory){
+            Response::json(['success' => 'Category deleted'],200);
         }
     }
 

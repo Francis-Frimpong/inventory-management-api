@@ -25,4 +25,21 @@ class Category{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function delete($id)
+    {
+         $sql = "
+            DELETE FROM categories
+            WHERE id = ?
+            AND NOT EXISTS (
+                    SELECT 1 
+                    FROM products 
+                    WHERE category_id = ?
+            )
+            ";
+
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([$id, $id]);
+            return $stmt->fetch();
+    }
 }
