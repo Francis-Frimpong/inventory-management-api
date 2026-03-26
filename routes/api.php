@@ -3,6 +3,7 @@ require_once __DIR__ . '/../app/Core/Router.php';
 require_once __DIR__. '/../app/Controllers/DashboardController.php';
 require_once __DIR__. '/../app/Controllers/CategoryController.php';
 require_once __DIR__. '/../app/Controllers/ProductController.php';
+require_once __DIR__. '/../app/Controllers/AddProductController.php';
 
 $router = new Router();
 
@@ -19,6 +20,8 @@ $router->delete('/api/categories/delete-categories/{id}', [CategoryController::c
 
 // products
 $router->get('/api/product', [ProductController::class, 'showProduct']);
+// add product
+$router->post('/api/create-product', [AddProductController::class, 'addproductData']);
 
 
 
