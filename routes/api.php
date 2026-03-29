@@ -4,6 +4,7 @@ require_once __DIR__. '/../app/Controllers/DashboardController.php';
 require_once __DIR__. '/../app/Controllers/CategoryController.php';
 require_once __DIR__. '/../app/Controllers/ProductController.php';
 require_once __DIR__. '/../app/Controllers/AddProductController.php';
+require_once __DIR__. '/../app/Controllers/StockInController.php';
 
 $router = new Router();
 
@@ -22,6 +23,10 @@ $router->delete('/api/categories/delete-categories/{id}', [CategoryController::c
 $router->get('/api/product', [ProductController::class, 'showProduct']);
 // add product
 $router->post('/api/create-product', [AddProductController::class, 'addproductData']);
+
+// StockIn 
+$router->post('/api/stockin', [StockInController::class, 'addStock']);
+
 
 
 
