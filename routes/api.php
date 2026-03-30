@@ -5,6 +5,7 @@ require_once __DIR__. '/../app/Controllers/CategoryController.php';
 require_once __DIR__. '/../app/Controllers/ProductController.php';
 require_once __DIR__. '/../app/Controllers/AddProductController.php';
 require_once __DIR__. '/../app/Controllers/StockInController.php';
+require_once __DIR__. '/../app/Controllers/StockOutController.php';
 
 $router = new Router();
 
@@ -26,6 +27,11 @@ $router->post('/api/create-product', [AddProductController::class, 'addproductDa
 
 // StockIn 
 $router->post('/api/stockin', [StockInController::class, 'addStock']);
+
+// Stockout
+$router->post('/api/stockout', [StockOutController::class, 'removeStock']);
+
+
 
 
 
